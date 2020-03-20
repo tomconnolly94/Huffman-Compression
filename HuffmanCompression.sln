@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HuffmanCompression", "HuffmanCompression\HuffmanCompression.vcxproj", "{D0B4C098-B0EC-40C1-A1A2-5259192D426F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0B4C098-B0EC-40C1-A1A2-5259192D426F}.Debug|x64.ActiveCfg = Debug|x64
+		{D0B4C098-B0EC-40C1-A1A2-5259192D426F}.Debug|x64.Build.0 = Debug|x64
+		{D0B4C098-B0EC-40C1-A1A2-5259192D426F}.Debug|x86.ActiveCfg = Debug|Win32
+		{D0B4C098-B0EC-40C1-A1A2-5259192D426F}.Debug|x86.Build.0 = Debug|Win32
+		{D0B4C098-B0EC-40C1-A1A2-5259192D426F}.Release|x64.ActiveCfg = Release|x64
+		{D0B4C098-B0EC-40C1-A1A2-5259192D426F}.Release|x64.Build.0 = Release|x64
+		{D0B4C098-B0EC-40C1-A1A2-5259192D426F}.Release|x86.ActiveCfg = Release|Win32
+		{D0B4C098-B0EC-40C1-A1A2-5259192D426F}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8966C9BE-F448-450B-9B04-617E401D0E0A}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,12 @@
+.*
+!/.gitignore
+
+Debug
+Release
+x64
+
+.log
+.tlog
+.obj
+.exe
+.pdb
