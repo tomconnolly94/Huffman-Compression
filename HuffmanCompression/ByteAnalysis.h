@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
+#include <map>
 
 class ByteAnalysis {
 public:
-	static unsigned* CountByteFrequency(std::string input);
+	static std::map<int, int> CountByteFrequency(std::string input);
 };

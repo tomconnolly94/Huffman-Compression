@@ -14,47 +14,23 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Source Files\DataStructures">
-      <UniqueIdentifier>{cf54ed29-8337-47d6-bc7b-50f2d368575d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\DataStructures">
-      <UniqueIdentifier>{06b99906-177b-42c5-b8c9-dca0e9fea599}</UniqueIdentifier>
+      <UniqueIdentifier>{4cba5fdb-77d5-4864-9a02-1006e07baea2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="HuffmanCompressionTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FileInterface.cpp">
+    <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ByteAnalysis.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Util.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HuffmanTree.cpp">
-      <Filter>Source Files\DataStructures</Filter>
-    </ClCompile>
-    <ClCompile Include="HuffmanNode.cpp">
+    <ClCompile Include="HuffmanTreeTest.cpp">
       <Filter>Source Files\DataStructures</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FileInterface.h">
+    <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ByteAnalysis.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Util.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HuffmanNode.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="HuffmanTree.h">
-      <Filter>Header Files\DataStructures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

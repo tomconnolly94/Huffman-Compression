@@ -1,5 +1,6 @@
 #include <iostream>
 #include "FileInterface.h"
+#include "ByteAnalysis.h"
 
 
 int main(int argc, char* argv[]) {
@@ -13,8 +14,8 @@ int main(int argc, char* argv[]) {
         char* file = argv[argIndex];
 
         std::string bitStream = FileInterface::ReadFileAsBits(file);
+        std::map<int, int> byteFrequencyCount = ByteAnalysis::CountByteFrequency(bitStream);
 
 
     }
-
 }
