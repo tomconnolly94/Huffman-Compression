@@ -2,8 +2,9 @@
 
 #include "HuffmanNode.h"
 
-HuffmanNode::HuffmanNode(int d) {
-    data = d;
+HuffmanNode::HuffmanNode(int data, int frequency) {
+    this->data = data;
+    this->frequency = frequency;
     left = NULL;
     right = NULL;
 };

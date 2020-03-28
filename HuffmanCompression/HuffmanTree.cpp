@@ -8,8 +8,6 @@ HuffmanTree::HuffmanTree() {
 
 
 HuffmanTree::HuffmanTree(std::map<int, int> byteFrequencies) {
-
-
 	for (std::map<int, int>::value_type& x : byteFrequencies)
 	{
 		std::cout << x.first << "," << x.second << std::endl;
@@ -17,15 +15,15 @@ HuffmanTree::HuffmanTree(std::map<int, int> byteFrequencies) {
 	rootNode = nullptr;
 }
 
-void HuffmanTree::AddNode(int data) {
+void HuffmanTree::AddNode(int data, int frequency) {
 	if (rootNode == nullptr) {
 		//add first node to tree
-		rootNode = new HuffmanNode(data);
+		rootNode = new HuffmanNode(data, frequency);
 		return;
 	}
 
-	HuffmanNode* newLeafNode = new HuffmanNode(data);
-	HuffmanNode* newRootNode = new HuffmanNode(data + rootNode->data);
+	HuffmanNode* newLeafNode = new HuffmanNode(data, frequency);
+	HuffmanNode* newRootNode = new HuffmanNode(NULL, data + rootNode->data);
 	newRootNode->left = newLeafNode;
 	newRootNode->right = rootNode;
 
