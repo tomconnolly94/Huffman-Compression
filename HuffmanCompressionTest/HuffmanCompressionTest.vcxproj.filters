@@ -27,6 +27,9 @@
     <ClCompile Include="HuffmanTreeTest.cpp">
       <Filter>Source Files\DataStructures</Filter>
     </ClCompile>
+    <ClCompile Include="ByteAnalysisTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">

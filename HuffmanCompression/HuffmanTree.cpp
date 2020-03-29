@@ -23,7 +23,7 @@ void HuffmanTree::AddNode(int data, int frequency) {
 	}
 
 	HuffmanNode* newLeafNode = new HuffmanNode(data, frequency);
-	HuffmanNode* newRootNode = new HuffmanNode(NULL, data + rootNode->data);
+	HuffmanNode* newRootNode = new HuffmanNode(NULL, frequency + rootNode->frequency);
 	newRootNode->left = newLeafNode;
 	newRootNode->right = rootNode;
 
