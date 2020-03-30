@@ -13,19 +13,16 @@ namespace HuffmanCompressionTest
 
 		TEST_METHOD(CountByteFrequencies)
 		{
-			//decimal rep = 113335555
-			std::string input = "00000001 00000001 00000011 00000011 00000011 00000101 00000101 00000101 00000101";
-			std::vector<std::pair<int, int>> outputMap = ByteAnalysis::CountByteFrequency(input);
+			//decimal rep = 0133355550
+			std::string input = "00000000000000010000001100000011000000110000010100000101000001010000010100000000";
+			std::unordered_map<int, int> outputMap = ByteAnalysis::CountByteFrequency(input);
 
-			Assert::AreEqual(3, (int)outputMap.size());
-			Assert::AreEqual(1, outputMap[0].first);
-			Assert::AreEqual(2, outputMap[0].second);
+			Assert::AreEqual(4, (int)outputMap.size());
 
-			Assert::AreEqual(3, outputMap[1].first);
-			Assert::AreEqual(3, outputMap[1].second);
-
-			Assert::AreEqual(5, outputMap[2].first);
-			Assert::AreEqual(4, outputMap[2].second);
+			Assert::AreEqual(2, outputMap[0]);
+			Assert::AreEqual(1, outputMap[1]);
+			Assert::AreEqual(3, outputMap[3]);
+			Assert::AreEqual(4, outputMap[5]);
 		}
 	};
 }
