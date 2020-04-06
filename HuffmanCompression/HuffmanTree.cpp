@@ -30,19 +30,20 @@ HuffmanTree::HuffmanTree(std::vector<HuffmanNode> huffmanNodes) {
 	}
 }
 
-HuffmanNode* HuffmanTree::AddPairOfNodes(HuffmanNode& node1, HuffmanNode& node2) 
+HuffmanNode* HuffmanTree::AddPairOfNodes(HuffmanNode node1, HuffmanNode node2) 
 {
 	HuffmanNode* newRootNode = new HuffmanNode(NULL, node1.frequency + node2.frequency);
 
-	newRootNode->left = *node1;
-	newRootNode->right = *node2;
+	rootNode = newRootNode;
 
-	rootNode = *newRootNode;
+	newRootNode->left = &node1;
+	newRootNode->right = &node2;
+
 
 	return newRootNode;
 }
 
-HuffmanNode HuffmanTree::GetRootNode() {
+HuffmanNode* HuffmanTree::GetRootNode() {
 	return rootNode;
 }
 

@@ -34,9 +34,13 @@ namespace HuffmanCompressionTest
 		TEST_METHOD(AddFourNodes)
 		{
 			HuffmanTree huffmanTree;
-			HuffmanNode* newRoot = huffmanTree.AddPairOfNodes(HuffmanNode('a', 2), HuffmanNode('b', 3));
-			newRoot = huffmanTree.AddPairOfNodes(*newRoot, HuffmanNode('c', 4));
-			huffmanTree.AddPairOfNodes(*newRoot, HuffmanNode('d', 5));
+			HuffmanNode* nodeA = new HuffmanNode('a', 2);
+			HuffmanNode* nodeB = new HuffmanNode('b', 3);
+			HuffmanNode* nodeC = new HuffmanNode('c', 4);
+			HuffmanNode* nodeD = new HuffmanNode('d', 5);
+			HuffmanNode* newRoot = huffmanTree.AddPairOfNodes(*nodeA, *nodeB);
+			newRoot = huffmanTree.AddPairOfNodes(*newRoot, *nodeC);
+			huffmanTree.AddPairOfNodes(*newRoot, *nodeD);
 
 			HuffmanNode* rootNode = huffmanTree.GetRootNode();
 
