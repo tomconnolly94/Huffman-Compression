@@ -4,9 +4,11 @@
 #include <map>
 #include <vector>
 
+#include "HuffmanNode.h"
+
 class ByteAnalysis {
 public:
-	static std::unordered_map<int, int> CountByteFrequency(std::string input);
+	static std::vector<HuffmanNode> CountByteFrequency(std::string input);
 private:
-	static std::unordered_map<int, int> SortByteFrequency(std::map<int, int> count);
+	static std::vector<HuffmanNode> GetHuffmanNodes(const std::unordered_map<int, int>& map);
 };

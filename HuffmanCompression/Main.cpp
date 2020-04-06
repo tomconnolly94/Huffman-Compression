@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
         char* file = argv[argIndex];
 
         std::string bitStream = FileInterface::ReadFileAsBits(file);
-        std::unordered_map<int, int> byteFrequencyCount = ByteAnalysis::CountByteFrequency(bitStream);
+        //std::vector<std::pair<int, int>> byteFrequencyCount = ByteAnalysis::CountByteFrequency(bitStream);
 
 
     }

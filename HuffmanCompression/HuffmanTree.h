@@ -5,10 +5,11 @@
 
 class HuffmanTree {
 public:
-	HuffmanTree(std::unordered_map<int, int> byteFrequency);
+	HuffmanTree(std::vector<HuffmanNode> byteFrequencies);
 	HuffmanTree();
-	void AddNode(int data, int frequency);
-	HuffmanNode* GetRootNode();
+	HuffmanNode* AddPairOfNodes(HuffmanNode& node1, HuffmanNode& node2);
+	HuffmanNode GetRootNode();
+	static void SoftHuffmanNodes(std::vector<HuffmanNode>& huffmanNodes);
 private:
-	HuffmanNode* rootNode;
+	HuffmanNode rootNode;
 };
