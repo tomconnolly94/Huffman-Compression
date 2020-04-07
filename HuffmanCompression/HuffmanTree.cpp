@@ -23,22 +23,21 @@ HuffmanTree::HuffmanTree(std::vector<HuffmanNode> huffmanNodes) {
 
 	while(huffmanNodes.size() > 1)
 	{
-		HuffmanNode* rootNode = AddPairOfNodes(huffmanNodes[0], huffmanNodes[1]);
-		huffmanNodes.erase(huffmanNodes.begin());
-		huffmanNodes.erase(huffmanNodes.begin() + 1);
+		HuffmanNode* rootNode = AddPairOfNodes(&huffmanNodes[0], &huffmanNodes[1]);
+		huffmanNodes.erase(huffmanNodes.begin()); //erase huffmanNodes[0]
+		huffmanNodes.erase(huffmanNodes.begin()); //erase huffmanNodes[1]
 		huffmanNodes.push_back(*rootNode);
 	}
 }
 
-HuffmanNode* HuffmanTree::AddPairOfNodes(HuffmanNode node1, HuffmanNode node2) 
+HuffmanNode* HuffmanTree::AddPairOfNodes(HuffmanNode* node1, HuffmanNode* node2) 
 {
-	HuffmanNode* newRootNode = new HuffmanNode(NULL, node1.frequency + node2.frequency);
+	HuffmanNode* newRootNode = new HuffmanNode(NULL, node1->frequency + node2->frequency);
 
 	rootNode = newRootNode;
 
-	newRootNode->left = &node1;
-	newRootNode->right = &node2;
-
+	newRootNode->left = node1;
+	newRootNode->right = node2;
 
 	return newRootNode;
 }
