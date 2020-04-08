@@ -69,8 +69,7 @@ namespace HuffmanCompressionTest
 			Assert::AreEqual((int)'b', rootNode->left->left->right->data);
 		}
 
-
-		TEST_METHOD(ConstructTreeFromList)
+		TEST_METHOD(ConstructSimpleTreeFromNodeList)
 		{
 			HuffmanNode huffmanNodeA(8, 11);
 			HuffmanNode huffmanNodeB(0, 1);
@@ -78,12 +77,12 @@ namespace HuffmanCompressionTest
 			HuffmanNode huffmanNodeD(1, 24);
 			HuffmanNode huffmanNodeE(7, 6);
 
-			std::vector<HuffmanNode> huffmanNodes = {
-				huffmanNodeA,
-				huffmanNodeB,
-				huffmanNodeC,
-				huffmanNodeD,
-				huffmanNodeE
+			std::vector<HuffmanNode*> huffmanNodes = {
+				&huffmanNodeA,
+				&huffmanNodeB,
+				&huffmanNodeC,
+				&huffmanNodeD,
+				&huffmanNodeE
 			};
 
 			HuffmanTree huffmanTree(huffmanNodes);
@@ -105,17 +104,73 @@ namespace HuffmanCompressionTest
 			Assert::AreEqual(15, rootNode->right->right->frequency);
 			Assert::AreEqual(NULL, rootNode->right->right->data);
 
-			Assert::AreEqual(8, rootNode->right->right->left->frequency);
-			Assert::AreEqual(15, rootNode->right->right->left->data);
+			Assert::AreEqual(7, rootNode->right->right->left->frequency);
+			Assert::AreEqual(NULL, rootNode->right->right->left->data);
 
-			Assert::AreEqual(7, rootNode->right->right->right->frequency);
-			Assert::AreEqual(NULL, rootNode->right->right->right->data);
+			Assert::AreEqual(8, rootNode->right->right->right->frequency);
+			Assert::AreEqual(15, rootNode->right->right->right->data);
 
-			Assert::AreEqual(6, rootNode->right->right->right->left->frequency);
-			Assert::AreEqual(7, rootNode->right->right->right->left->data);
+			Assert::AreEqual(1, rootNode->right->right->left->left->frequency);
+			Assert::AreEqual(0, rootNode->right->right->left->left->data);
 
-			Assert::AreEqual(1, rootNode->right->right->right->right->frequency);
-			Assert::AreEqual(0, rootNode->right->right->right->right->data);
+			Assert::AreEqual(6, rootNode->right->right->left->right->frequency);
+			Assert::AreEqual(7, rootNode->right->right->left->right->data);
+		}
+
+		TEST_METHOD(ConstructComplexTreeFromNodeList)
+		{
+			HuffmanNode huffmanNodeB(39, 7);
+			HuffmanNode huffmanNodeC(4, 8);
+			HuffmanNode huffmanNodeF(41, 78);
+			HuffmanNode huffmanNodeA(27, 6);
+			HuffmanNode huffmanNodeE(69, 24);
+			HuffmanNode huffmanNodeD(3, 9);
+
+			std::vector<HuffmanNode*> huffmanNodes = {
+				&huffmanNodeA,
+				&huffmanNodeB,
+				&huffmanNodeC,
+				&huffmanNodeD,
+				&huffmanNodeE,
+				&huffmanNodeF
+			};
+
+			HuffmanTree huffmanTree(huffmanNodes);
+
+			HuffmanNode* rootNode = huffmanTree.GetRootNode();
+
+			Assert::AreEqual(132, rootNode->frequency);
+			Assert::AreEqual(NULL, rootNode->data);
+
+			Assert::AreEqual(54, rootNode->left->frequency);
+			Assert::AreEqual(NULL, rootNode->left->data);
+
+			Assert::AreEqual(78, rootNode->right->frequency);
+			Assert::AreEqual(41, rootNode->right->data);
+
+			Assert::AreEqual(24, rootNode->left->left->frequency);
+			Assert::AreEqual(69, rootNode->left->left->data);
+
+			Assert::AreEqual(30, rootNode->left->right->frequency);
+			Assert::AreEqual(NULL, rootNode->left->right->data);
+
+			Assert::AreEqual(13, rootNode->left->right->left->frequency);
+			Assert::AreEqual(NULL, rootNode->left->right->left->data);
+
+			Assert::AreEqual(17, rootNode->left->right->right->frequency);
+			Assert::AreEqual(NULL, rootNode->left->right->right->data);
+
+			Assert::AreEqual(6, rootNode->left->right->left->left->frequency);
+			Assert::AreEqual(27, rootNode->left->right->left->left->data);
+
+			Assert::AreEqual(7, rootNode->left->right->left->right->frequency);
+			Assert::AreEqual(39, rootNode->left->right->left->right->data);
+
+			Assert::AreEqual(8, rootNode->left->right->right->left->frequency);
+			Assert::AreEqual(4, rootNode->left->right->right->left->data);
+
+			Assert::AreEqual(9, rootNode->left->right->right->right->frequency);
+			Assert::AreEqual(3, rootNode->left->right->right->right->data);
 		}
 	};
 }

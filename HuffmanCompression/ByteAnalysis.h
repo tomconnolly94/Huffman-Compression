@@ -8,7 +8,7 @@
 
 class ByteAnalysis {
 public:
-	static std::vector<HuffmanNode> CountByteFrequency(std::string input);
+	static std::vector<HuffmanNode*> CountByteFrequency(std::string input);
 private:
-	static std::vector<HuffmanNode> GetHuffmanNodes(const std::unordered_map<int, int>& map);
+	static std::vector<HuffmanNode*> GetHuffmanNodes(const std::unordered_map<int, int>& map);
 };

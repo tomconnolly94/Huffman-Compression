@@ -7,9 +7,9 @@
 //sort comparison operator
 struct lessThanFrequency
 {
-	inline bool operator() (const HuffmanNode& struct1, const HuffmanNode& struct2)
+	inline bool operator() (const HuffmanNode* struct1, const HuffmanNode* struct2)
 	{
-		return (struct1.frequency < struct2.frequency);
+		return (struct1->frequency < struct2->frequency);
 	}
 };
 
@@ -22,16 +22,16 @@ HuffmanTree::~HuffmanTree() {
 	//TODO: also need to traverse tree and dealloc each nodes memory
 }
 
-HuffmanTree::HuffmanTree(std::vector<HuffmanNode> huffmanNodes) {
+HuffmanTree::HuffmanTree(std::vector<HuffmanNode*> huffmanNodes) {
 	rootNode = nullptr;
-	SortHuffmanNodes(huffmanNodes);
 
 	while(huffmanNodes.size() > 1)
 	{
-		HuffmanNode* rootNode = AddPairOfNodes(&huffmanNodes[0], &huffmanNodes[1]);
+		SortHuffmanNodes(huffmanNodes);
+		HuffmanNode* rootNode = AddPairOfNodes(huffmanNodes[0], huffmanNodes[1]);
 		huffmanNodes.erase(huffmanNodes.begin()); //erase huffmanNodes[0]
 		huffmanNodes.erase(huffmanNodes.begin()); //erase huffmanNodes[1]
-		huffmanNodes.push_back(*rootNode);
+		huffmanNodes.push_back(rootNode);
 	}
 }
 
@@ -50,7 +50,7 @@ HuffmanNode* HuffmanTree::GetRootNode() {
 	return rootNode;
 }
 
-void HuffmanTree::SortHuffmanNodes(std::vector<HuffmanNode>& huffmanNodes)
+void HuffmanTree::SortHuffmanNodes(std::vector<HuffmanNode*>& huffmanNodes)
 {
 	sort(huffmanNodes.begin(), huffmanNodes.end(), lessThanFrequency());
 }
