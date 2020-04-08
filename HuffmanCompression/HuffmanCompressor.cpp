@@ -19,4 +19,7 @@ void HuffmanCompressor::Compress(char* filePath) {
 
 	//replace each occurence of huffmanCode.first found in bitStream with the corresponding huffmanCode.second
 	std::string outputBitStream = BitStreamEditor::ApplyHuffmanCodes(bitStream, huffmanCodes);
+
+	//write outputBitStream to a new file
+
 }

@@ -16,6 +16,9 @@
     <Filter Include="Source Files\DataStructures">
       <UniqueIdentifier>{4cba5fdb-77d5-4864-9a02-1006e07baea2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\BitManipulation">
+      <UniqueIdentifier>{bf988bb5-21b1-4fb3-b487-0ca7a5c3b6c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HuffmanCompressionTest.cpp">
@@ -27,8 +30,11 @@
     <ClCompile Include="HuffmanTreeTest.cpp">
       <Filter>Source Files\DataStructures</Filter>
     </ClCompile>
-    <ClCompile Include="ByteAnalysisTest.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="BitStreamEditorTest.cpp">
+      <Filter>Source Files\BitManipulation</Filter>
+    </ClCompile>
+    <ClCompile Include="BitStreamAnalysisTest.cpp">
+      <Filter>Source Files\BitManipulation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -7,15 +7,18 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace HuffmanCompressionTest
 {
-	TEST_CLASS(ByteAnalysisTest)
+	TEST_CLASS(BitStreamAnalysisTest)
 	{
 	public:
 
-		TEST_METHOD(CountByteFrequencies)
+		TEST_METHOD(TestCountByteFrequencies)
 		{
 			//decimal rep = 0133355550
 			std::string input = "00000000000000010000001100000011000000110000010100000101000001010000010100000000";
 			std::vector<HuffmanNode*> outputMap = BitStreamAnalysis::CountByteFrequency(input);
+			std::vector<HuffmanNode*> huffmanNodes = BitStreamAnalysis::CountByteFrequency(input);
+			HuffmanTree huffmanTree(huffmanNodes);
+			std::unordered_map<int, std::string> huffmanCodes = huffmanTree.GenerateHuffmanCodes();
 
 			Assert::AreEqual(4, (int)outputMap.size());
 
