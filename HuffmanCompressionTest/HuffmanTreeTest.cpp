@@ -78,7 +78,7 @@ namespace HuffmanCompressionTest
 			HuffmanNode huffmanNodeD(1, 24);
 			HuffmanNode huffmanNodeE(7, 6);
 
-			std::vector<HuffmanNode> sortedFrequencyVector = {
+			std::vector<HuffmanNode> huffmanNodes = {
 				huffmanNodeA,
 				huffmanNodeB,
 				huffmanNodeC,
@@ -86,7 +86,7 @@ namespace HuffmanCompressionTest
 				huffmanNodeE
 			};
 
-			HuffmanTree huffmanTree(sortedFrequencyVector);
+			HuffmanTree huffmanTree(huffmanNodes);
 
 			HuffmanNode* rootNode = huffmanTree.GetRootNode();
 
