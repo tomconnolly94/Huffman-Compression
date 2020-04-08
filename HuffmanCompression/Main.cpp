@@ -1,7 +1,8 @@
 #include <iostream>
 #include <unordered_map>
 #include "FileInterface.h"
-#include "ByteAnalysis.h"
+#include "BitStreamAnalysis.h"
+#include "HuffmanCompressor.h"
 
 
 int main(int argc, char* argv[]) {
@@ -12,11 +13,9 @@ int main(int argc, char* argv[]) {
 
     for (int argIndex = 1; argIndex < argc; ++argIndex) {
 
-        char* file = argv[argIndex];
+        char* filePath = argv[argIndex];
 
-        std::string bitStream = FileInterface::ReadFileAsBits(file);
-        //std::vector<std::pair<int, int>> byteFrequencyCount = ByteAnalysis::CountByteFrequency(bitStream);
-
+        HuffmanCompressor::Compress(filePath);
 
     }
 }

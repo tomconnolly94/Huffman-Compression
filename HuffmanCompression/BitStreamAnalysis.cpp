@@ -1,9 +1,9 @@
-
-#include "ByteAnalysis.h"
+//internal includes
+#include "BitStreamAnalysis.h"
 #include "Util.h"
 #include "HuffmanTree.h"
 
-std::vector<HuffmanNode*> ByteAnalysis::CountByteFrequency(std::string input) {
+std::vector<HuffmanNode*> BitStreamAnalysis::CountByteFrequency(std::string input) {
     std::unordered_map<int, int> count;
 
     for (unsigned i = 0; i < input.size(); i += 8)
@@ -14,7 +14,7 @@ std::vector<HuffmanNode*> ByteAnalysis::CountByteFrequency(std::string input) {
     return GetHuffmanNodes(count);
 }
 
-std::vector<HuffmanNode*> ByteAnalysis::GetHuffmanNodes(const std::unordered_map<int, int>& pairMap)
+std::vector<HuffmanNode*> BitStreamAnalysis::GetHuffmanNodes(const std::unordered_map<int, int>& pairMap)
 {
     std::vector<HuffmanNode*> huffmanNodes;
     for (std::pair<int, int> pair : pairMap) {

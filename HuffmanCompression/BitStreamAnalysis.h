@@ -1,12 +1,14 @@
 #pragma once
+//external includes
 #include <string>
 #include <unordered_map>
 #include <map>
 #include <vector>
 
+//internal includes
 #include "HuffmanNode.h"
 
-class ByteAnalysis {
+class BitStreamAnalysis {
 public:
 	static std::vector<HuffmanNode*> CountByteFrequency(std::string input);
 private:

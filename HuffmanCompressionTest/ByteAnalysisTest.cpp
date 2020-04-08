@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "../HuffmanCompression/ByteAnalysis.cpp"
+#include "../HuffmanCompression/BitStreamAnalysis.cpp"
 #include "../HuffmanCompression/Util.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -15,7 +15,7 @@ namespace HuffmanCompressionTest
 		{
 			//decimal rep = 0133355550
 			std::string input = "00000000000000010000001100000011000000110000010100000101000001010000010100000000";
-			std::vector<HuffmanNode*> outputMap = ByteAnalysis::CountByteFrequency(input);
+			std::vector<HuffmanNode*> outputMap = BitStreamAnalysis::CountByteFrequency(input);
 
 			Assert::AreEqual(4, (int)outputMap.size());
 

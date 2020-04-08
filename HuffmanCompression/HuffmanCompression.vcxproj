@@ -138,16 +138,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ByteAnalysis.cpp" />
+    <ClCompile Include="BitStreamAnalysis.cpp" />
+    <ClCompile Include="BitStreamEditor.cpp" />
     <ClCompile Include="FileInterface.cpp" />
+    <ClCompile Include="HuffmanCompressor.cpp" />
     <ClCompile Include="HuffmanNode.cpp" />
     <ClCompile Include="HuffmanTree.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BitStreamEditor.h" />
     <ClInclude Include="FileInterface.h" />
-    <ClInclude Include="ByteAnalysis.h" />
+    <ClInclude Include="BitStreamAnalysis.h" />
+    <ClInclude Include="HuffmanCompressor.h" />
     <ClInclude Include="HuffmanNode.h" />
     <ClInclude Include="HuffmanTree.h" />
     <ClInclude Include="Util.h" />
