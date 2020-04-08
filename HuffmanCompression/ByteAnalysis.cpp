@@ -20,6 +20,6 @@ std::vector<HuffmanNode> ByteAnalysis::GetHuffmanNodes(const std::unordered_map<
     for (std::pair<int, int> pair : pairMap) {
         huffmanNodes.push_back(HuffmanNode(pair.first, pair.second));
     }
-    HuffmanTree::SoftHuffmanNodes(huffmanNodes);
+    HuffmanTree::SortHuffmanNodes(huffmanNodes);
     return huffmanNodes;
 }

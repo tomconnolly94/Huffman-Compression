@@ -9,7 +9,7 @@ public:
 	HuffmanTree();
 	HuffmanNode* AddPairOfNodes(HuffmanNode* node1, HuffmanNode* node2);
 	HuffmanNode* GetRootNode();
-	static void SoftHuffmanNodes(std::vector<HuffmanNode>& huffmanNodes);
+	static void SortHuffmanNodes(std::vector<HuffmanNode>& huffmanNodes);
 	~HuffmanTree();
 private:
 	HuffmanNode* rootNode;

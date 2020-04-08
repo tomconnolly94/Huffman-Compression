@@ -24,7 +24,7 @@ HuffmanTree::~HuffmanTree() {
 
 HuffmanTree::HuffmanTree(std::vector<HuffmanNode> huffmanNodes) {
 	rootNode = nullptr;
-	SoftHuffmanNodes(huffmanNodes);
+	SortHuffmanNodes(huffmanNodes);
 
 	while(huffmanNodes.size() > 1)
 	{
@@ -50,7 +50,7 @@ HuffmanNode* HuffmanTree::GetRootNode() {
 	return rootNode;
 }
 
-void HuffmanTree::SoftHuffmanNodes(std::vector<HuffmanNode>& huffmanNodes)
+void HuffmanTree::SortHuffmanNodes(std::vector<HuffmanNode>& huffmanNodes)
 {
 	sort(huffmanNodes.begin(), huffmanNodes.end(), lessThanFrequency());
 }
