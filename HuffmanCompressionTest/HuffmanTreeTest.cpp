@@ -17,7 +17,9 @@ namespace HuffmanCompressionTest
 		TEST_METHOD(AddTwoNodes)
 		{
 			HuffmanTree huffmanTree;
-			huffmanTree.AddPairOfNodes(new HuffmanNode('a', 2), new HuffmanNode('b', 3));
+			HuffmanNode nodeA('a', 2);
+			HuffmanNode nodeB('b', 3);
+			huffmanTree.AddPairOfNodes(&nodeA, &nodeB);
 
 			HuffmanNode* rootNode = huffmanTree.GetRootNode();
 
@@ -34,14 +36,14 @@ namespace HuffmanCompressionTest
 		TEST_METHOD(AddFourNodes)
 		{
 			HuffmanTree huffmanTree;
-			HuffmanNode* nodeA = new HuffmanNode('a', 2);
-			HuffmanNode* nodeB = new HuffmanNode('b', 3);
-			HuffmanNode* nodeC = new HuffmanNode('c', 4);
-			HuffmanNode* nodeD = new HuffmanNode('d', 5);
+			HuffmanNode nodeA('a', 2);
+			HuffmanNode nodeB('b', 3);
+			HuffmanNode nodeC('c', 4);
+			HuffmanNode nodeD('d', 5);
 
-			HuffmanNode* newRoot = huffmanTree.AddPairOfNodes(nodeA, nodeB);
-			newRoot = huffmanTree.AddPairOfNodes(newRoot, nodeC);
-			huffmanTree.AddPairOfNodes(newRoot, nodeD);
+			HuffmanNode* newRoot = huffmanTree.AddPairOfNodes(&nodeA, &nodeB);
+			newRoot = huffmanTree.AddPairOfNodes(newRoot, &nodeC);
+			huffmanTree.AddPairOfNodes(newRoot, &nodeD);
 
 			HuffmanNode* rootNode = huffmanTree.GetRootNode();
 
@@ -70,12 +72,18 @@ namespace HuffmanCompressionTest
 
 		TEST_METHOD(ConstructTreeFromList)
 		{
+			HuffmanNode huffmanNodeA(8, 11);
+			HuffmanNode huffmanNodeB(0, 1);
+			HuffmanNode huffmanNodeC(15, 8);
+			HuffmanNode huffmanNodeD(1, 24);
+			HuffmanNode huffmanNodeE(7, 6);
+
 			std::vector<HuffmanNode> sortedFrequencyVector = {
-				HuffmanNode(8, 11),
-				HuffmanNode(0, 1),
-				HuffmanNode(15, 8),
-				HuffmanNode(1, 24),
-				HuffmanNode(7, 6)
+				huffmanNodeA,
+				huffmanNodeB,
+				huffmanNodeC,
+				huffmanNodeD,
+				huffmanNodeE
 			};
 
 			HuffmanTree huffmanTree(sortedFrequencyVector);

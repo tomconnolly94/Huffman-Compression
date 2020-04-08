@@ -32,14 +32,14 @@ HuffmanTree::HuffmanTree(std::vector<HuffmanNode> huffmanNodes) {
 
 HuffmanNode* HuffmanTree::AddPairOfNodes(HuffmanNode* node1, HuffmanNode* node2) 
 {
-	HuffmanNode* newRootNode = new HuffmanNode(NULL, node1->frequency + node2->frequency);
+	HuffmanNode newRootNode(NULL, node1->frequency + node2->frequency);
 
-	rootNode = newRootNode;
+	rootNode = &newRootNode;
 
-	newRootNode->left = node1;
-	newRootNode->right = node2;
+	rootNode->left = node1;
+	rootNode->right = node2;
 
-	return newRootNode;
+	return rootNode;
 }
 
 HuffmanNode* HuffmanTree::GetRootNode() {
