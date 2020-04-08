@@ -14,7 +14,7 @@ namespace HuffmanCompressionTest
 	TEST_CLASS(HuffmanTreeTest)
 	{
 	public:
-		TEST_METHOD(AddTwoNodes)
+		TEST_METHOD(TestAddTwoNodes)
 		{
 			HuffmanTree huffmanTree;
 			HuffmanNode nodeA('a', 2);
@@ -33,7 +33,7 @@ namespace HuffmanCompressionTest
 			Assert::AreEqual((int)'b', rootNode->right->data);
 		}
 
-		TEST_METHOD(AddFourNodes)
+		TEST_METHOD(TestAddFourNodes)
 		{
 			HuffmanTree huffmanTree;
 			HuffmanNode nodeA('a', 2);
@@ -69,7 +69,7 @@ namespace HuffmanCompressionTest
 			Assert::AreEqual((int)'b', rootNode->left->left->right->data);
 		}
 
-		TEST_METHOD(ConstructSimpleTreeFromNodeList)
+		TEST_METHOD(TestSimpleTreeConstruction)
 		{
 			HuffmanNode huffmanNodeA(8, 11);
 			HuffmanNode huffmanNodeB(0, 1);
@@ -117,7 +117,7 @@ namespace HuffmanCompressionTest
 			Assert::AreEqual(7, rootNode->right->right->left->right->data);
 		}
 
-		TEST_METHOD(ConstructComplexTreeFromNodeList)
+		TEST_METHOD(TestComplexTreeConstruction)
 		{
 			HuffmanNode huffmanNodeB(39, 7);
 			HuffmanNode huffmanNodeC(4, 8);
@@ -171,6 +171,45 @@ namespace HuffmanCompressionTest
 
 			Assert::AreEqual(9, rootNode->left->right->right->right->frequency);
 			Assert::AreEqual(3, rootNode->left->right->right->right->data);
+		}
+
+		TEST_METHOD(TestHuffmanCodeGeneration)
+		{
+			HuffmanNode huffmanNodeB(39, 7);
+			HuffmanNode huffmanNodeC(4, 8);
+			HuffmanNode huffmanNodeF(41, 78);
+			HuffmanNode huffmanNodeA(27, 6);
+			HuffmanNode huffmanNodeE(69, 24);
+			HuffmanNode huffmanNodeD(3, 9);
+
+			std::vector<HuffmanNode*> huffmanNodes = {
+				&huffmanNodeA,
+				&huffmanNodeB,
+				&huffmanNodeC,
+				&huffmanNodeD,
+				&huffmanNodeE,
+				&huffmanNodeF
+			};
+
+			HuffmanTree huffmanTree(huffmanNodes);
+
+			std::unordered_map<int, std::string> huffmanCodeMap = huffmanTree.GenerateHuffmanCodes();
+			
+			std::unordered_map<int, std::string> expectedHuffmanCodeMap = {
+				{69, "11"},
+				{3, "1000"},
+				{27, "1011"},
+				{39, "1010"},
+				{4, "1001"},
+				{41, "0"}
+			};
+
+			Assert::AreEqual(expectedHuffmanCodeMap.size(), huffmanCodeMap.size());
+
+			for (size_t index = 0; index < expectedHuffmanCodeMap.size(); ++index)
+			{
+				Assert::AreEqual(expectedHuffmanCodeMap[index], huffmanCodeMap[index]);
+			}
 		}
 	};
 }
