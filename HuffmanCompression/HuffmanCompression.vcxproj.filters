@@ -19,12 +19,6 @@
     <Filter Include="Header Files\DataStructures">
       <UniqueIdentifier>{06b99906-177b-42c5-b8c9-dca0e9fea599}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Interfacing">
-      <UniqueIdentifier>{ac959d40-47b5-4b8d-9d04-d4b8d73fc86d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interfacing">
-      <UniqueIdentifier>{12b53f45-303e-492c-94dd-6640af6eb1c7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\BitManipulation">
       <UniqueIdentifier>{4ecf9622-5f02-415f-9345-7a73dc4a1918}</UniqueIdentifier>
     </Filter>
@@ -44,9 +38,6 @@
     </ClCompile>
     <ClCompile Include="HuffmanNode.cpp">
       <Filter>Source Files\DataStructures</Filter>
-    </ClCompile>
-    <ClCompile Include="FileInterface.cpp">
-      <Filter>Source Files\Interfacing</Filter>
     </ClCompile>
     <ClCompile Include="HuffmanCompressor.cpp">
       <Filter>Source Files</Filter>
@@ -70,9 +61,6 @@
     </ClInclude>
     <ClInclude Include="HuffmanCompressor.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FileInterface.h">
-      <Filter>Header Files\Interfacing</Filter>
     </ClInclude>
     <ClInclude Include="BitStreamAnalysis.h">
       <Filter>Header Files\BitManipulation</Filter>
