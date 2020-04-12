@@ -211,5 +211,32 @@ namespace HuffmanCompressionTest
 				Assert::AreEqual(expectedHuffmanCodeMap[index], huffmanCodeMap[index]);
 			}
 		}
+
+		TEST_METHOD(TestHuffmanTreeSerialising)
+		{
+			HuffmanNode huffmanNodeB(39, 7);
+			HuffmanNode huffmanNodeC(4, 8);
+			HuffmanNode huffmanNodeF(41, 78);
+			HuffmanNode huffmanNodeA(27, 6);
+			HuffmanNode huffmanNodeE(69, 24);
+			HuffmanNode huffmanNodeD(3, 9);
+
+			std::vector<HuffmanNode*> huffmanNodes = {
+				&huffmanNodeA,
+				&huffmanNodeB,
+				&huffmanNodeC,
+				&huffmanNodeD,
+				&huffmanNodeE,
+				&huffmanNodeF
+			};
+
+			HuffmanTree huffmanTree(huffmanNodes);
+
+			std::string serialisedHuffmanCodes = huffmanTree.SerialiseToJSON();
+			
+			std::string expectedSerialisedHuffmanCodes = "{{\"69\", \"11\"},{\"3\", \"1000\"},{\"27\",\"1011\"},{\"39\", \"1010\"},{\"4\", \"1001\"},{\"41\", \"0\"}}";
+
+			Assert::AreEqual(expectedSerialisedHuffmanCodes, serialisedHuffmanCodes);
+		}
 	};
 }

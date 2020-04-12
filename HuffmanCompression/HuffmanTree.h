@@ -12,6 +12,7 @@ public:
 	HuffmanNode* GetRootNode();
 	static void SortHuffmanNodes(std::vector<HuffmanNode*>& huffmanNodes);
 	std::unordered_map<int, std::string> GenerateHuffmanCodes();
+	std::string SerialiseToJSON();
 private:
 	HuffmanNode* rootNode;
 	std::unordered_map<int, std::string> TraverseNode(HuffmanNode* huffmanNode, std::string huffmanCode);

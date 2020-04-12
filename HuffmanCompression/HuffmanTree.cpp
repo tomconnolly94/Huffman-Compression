@@ -85,3 +85,18 @@ std::unordered_map<int, std::string> HuffmanTree::TraverseNode(HuffmanNode* huff
 
 	return huffmanCodeMap;
 }
+
+std::string HuffmanTree::SerialiseToJSON()
+{
+	std::unordered_map<int, std::string> huffmanCodes = GenerateHuffmanCodes();
+	std::string output = "{";
+
+	for (std::pair<int, std::string> huffmanCode : huffmanCodes)
+	{
+		output += "{ \"" + std::to_string(huffmanCode.first) + "\": \"" + huffmanCode.second + "\"},";
+	}
+
+	output += "}";
+
+	return output;
+}
