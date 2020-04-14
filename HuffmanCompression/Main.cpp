@@ -1,7 +1,4 @@
 #include <iostream>
-#include <unordered_map>
-#include "FileInterface.h"
-#include "BitStreamAnalysis.h"
 #include "HuffmanCompressor.h"
 
 
@@ -25,6 +22,5 @@ int main(int argc, char* argv[]) {
         {
             //HuffmanCompressor::Decompress(filePath, compressedExtension);
         }
-
     }
 }

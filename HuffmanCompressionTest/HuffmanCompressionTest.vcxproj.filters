@@ -19,6 +19,9 @@
     <Filter Include="Source Files\BitManipulation">
       <UniqueIdentifier>{bf988bb5-21b1-4fb3-b487-0ca7a5c3b6c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Interfaces">
+      <UniqueIdentifier>{b578bfc4-f05e-4491-a872-37d33a4e4e2e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HuffmanCompressionTest.cpp">
@@ -35,6 +38,9 @@
     </ClCompile>
     <ClCompile Include="BitStreamAnalysisTest.cpp">
       <Filter>Source Files\BitManipulation</Filter>
+    </ClCompile>
+    <ClCompile Include="HuffmanFileInterfaceTest.cpp">
+      <Filter>Source Files\Interfaces</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

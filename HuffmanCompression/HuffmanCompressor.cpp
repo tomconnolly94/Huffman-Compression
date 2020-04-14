@@ -5,7 +5,7 @@
 
 //internal includes
 #include "HuffmanCompressor.h"
-#include "FileInterface.h"
+#include "HuffmanFileInterface.h"
 #include "HuffmanNode.h"
 #include "BitStreamAnalysis.h"
 #include "BitStreamEditor.h"
@@ -13,7 +13,7 @@
 
 void HuffmanCompressor::Compress(char* filePath, std::string compressedExtension, std::string huffmanTreeJSONExtension) {
 
-	std::string bitStream = FileInterface::ReadFileAsBits(filePath);
+	std::string bitStream = HuffmanFileInterface::ReadFileAsBits(filePath);
 	std::vector<HuffmanNode*> huffmanNodes = BitStreamAnalysis::CountByteFrequency(bitStream);
 	HuffmanTree huffmanTree(huffmanNodes);
 	std::unordered_map<int, std::string> huffmanCodes = huffmanTree.GenerateHuffmanCodes();
@@ -24,14 +24,14 @@ void HuffmanCompressor::Compress(char* filePath, std::string compressedExtension
     //write outputBitStream to a new file
     std::string compressedFileName = GetNewFilePath(filePath, compressedExtension);
     CreateNewFile(compressedFileName);
-	FileInterface::WriteBitsToFile(outputBitStream, compressedFileName.c_str());
+    HuffmanFileInterface::WriteBitsToFile(outputBitStream, compressedFileName.c_str());
 
     std::string serialisedHuffmanTrees = huffmanTree.SerialiseToJSON();
 
     //write serialised HuffmanTree to a new file
     std::string huffmanTreeJSONFileName = GetNewFilePath(filePath, huffmanTreeJSONExtension);
     CreateNewFile(huffmanTreeJSONFileName);
-    FileInterface::WriteStringToFile(serialisedHuffmanTrees, huffmanTreeJSONFileName.c_str());
+    HuffmanFileInterface::WriteStringToFile(serialisedHuffmanTrees, huffmanTreeJSONFileName.c_str());
 }
 
 std::string HuffmanCompressor::GetNewFilePath(char* filePath, std::string compressedExtension)

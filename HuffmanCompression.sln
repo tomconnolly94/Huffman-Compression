@@ -4,8 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HuffmanCompression", "HuffmanCompression\HuffmanCompression.vcxproj", "{D0B4C098-B0EC-40C1-A1A2-5259192D426F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8E1E428F-8350-4170-A2D7-E495839D130D} = {8E1E428F-8350-4170-A2D7-E495839D130D}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HuffmanCompressionTest", "HuffmanCompressionTest\HuffmanCompressionTest.vcxproj", "{4179A433-E57F-4ABE-BEDA-A55E2A2BAED2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8E1E428F-8350-4170-A2D7-E495839D130D} = {8E1E428F-8350-4170-A2D7-E495839D130D}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppCommonTProj", "cppcommontproj\CppCommonTProj\CppCommonTProj.vcxproj", "{8E1E428F-8350-4170-A2D7-E495839D130D}"
 EndProject
