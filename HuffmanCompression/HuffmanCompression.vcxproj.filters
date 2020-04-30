@@ -25,6 +25,12 @@
     <Filter Include="Header Files\BitManipulation">
       <UniqueIdentifier>{074d7079-8fba-4659-a553-8874ebc6fb54}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Interfaces">
+      <UniqueIdentifier>{15f36c77-5617-4ff9-9e00-6428831db5ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces">
+      <UniqueIdentifier>{cf9d0d06-3b51-49ed-8638-c9ab6f6c61bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -48,6 +54,9 @@
     <ClCompile Include="BitStreamEditor.cpp">
       <Filter>Source Files\BitManipulation</Filter>
     </ClCompile>
+    <ClCompile Include="HuffmanFileInterface.cpp">
+      <Filter>Source Files\Interfaces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Util.h">
@@ -67,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="BitStreamEditor.h">
       <Filter>Header Files\BitManipulation</Filter>
+    </ClInclude>
+    <ClInclude Include="HuffmanFileInterface.h">
+      <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

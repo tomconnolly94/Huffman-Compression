@@ -1,11 +1,13 @@
 //external includes
 #include <iostream>
+//external includes
 #include <stdlib.h>
 #include <set>
 #include <vector>
 
 //internal includes
 #include "HuffmanCompressor.h"
+#include "Util.h"
 
 
 int main(int argc, char* argv[]) {
@@ -20,7 +22,7 @@ int main(int argc, char* argv[]) {
         std::string compressedExtension = ".huffCompressed";
         std::string huffmanCodesFileExtension = ".huffmanCodes";
 
-        if (HuffmanCompressor::IsCompressing(filePath, compressedExtension))
+        if (Util::IsCompressing(filePath, compressedExtension))
         {
             HuffmanCompressor::Compress(filePath, compressedExtension, huffmanCodesFileExtension);
         }

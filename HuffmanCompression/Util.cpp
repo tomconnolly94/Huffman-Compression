@@ -1,7 +1,9 @@
+//external includes
 #include <map>
-
-#include "Util.h"
 #include <bitset>
+
+//internal includes
+#include "Util.h"
 
 int Util::ConvertBinaryToDecimal(std::string strInput)
 {
@@ -38,4 +40,15 @@ std::unordered_map<std::string, int> Util::ReverseHuffmanCodeMap(std::unordered_
 		reversedHuffmanCodes.insert(std::pair<std::string, int>(huffmanCode.second, huffmanCode.first));
 	}
 	return reversedHuffmanCodes;
+}
+
+bool Util::IsCompressing(std::string fileString, std::string compressedExtension)
+{
+    bool compressing = true;
+    std::size_t found = fileString.find(compressedExtension);
+
+    if (found != std::string::npos) {
+        compressing = false;
+    }
+    return compressing;
 }
