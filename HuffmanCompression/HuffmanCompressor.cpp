@@ -10,8 +10,10 @@
 #include "BitStreamAnalysis.h"
 #include "BitStreamEditor.h"
 #include "HuffmanTree.h"
+#include "Util.h"
 
-void HuffmanCompressor::Compress(char* filePath, std::string compressedExtension, std::string huffmanCodesFileExtension) {
+void HuffmanCompressor::Compress(char* filePath, std::string compressedExtension, std::string huffmanCodesFileExtension) 
+{
 
 	std::string bitStream = FileInterface::ReadFileAsBits(filePath);
 	std::vector<HuffmanNode*> huffmanNodes = BitStreamAnalysis::CountByteFrequency(bitStream);
@@ -34,7 +36,27 @@ void HuffmanCompressor::Compress(char* filePath, std::string compressedExtension
     FileInterface::WriteStringToFile(serialisedHuffmanCodes, huffmanCodesFileName.c_str());
 }
 
-std::string HuffmanCompressor::GetNewFilePath(char* filePath, std::string compressedExtension)
+void HuffmanCompressor::Decompress(char* compressedFile, std::string compressedExtension, std::string huffmanCodesFileExtension)
+{
+    std::string compressedBitStream = FileInterface::ReadFileAsBits(compressedFile);
+    std::string decompressedFilePath = StripExtension(std::string(compressedFile), compressedExtension);
+    std::string huffmanCodesFile = GetNewFilePath(decompressedFilePath.c_str(), huffmanCodesFileExtension);
+
+    std::unordered_map<int, std::string> huffmanCodes = HuffmanTree::DeserialiseFromNewLines(FileInterface::ReadStringFromFile(huffmanCodesFile.c_str()));
+    std::unordered_map<std::string, int> reversedHuffmanCodes = Util::ReverseHuffmanCodeMap(huffmanCodes);
+    
+    std::string originalTextAsBits = BitStreamEditor::ReverseHuffmanCodes(compressedBitStream, reversedHuffmanCodes);
+
+    std::string decompressedFileName = StripExtension(compressedFile, compressedExtension);
+
+    if (!FileExists(decompressedFileName)) {
+        CreateNewFile(decompressedFileName);
+    }
+
+    FileInterface::WriteBitsToFile(originalTextAsBits, decompressedFileName.c_str());
+}
+
+std::string HuffmanCompressor::GetNewFilePath(const char* filePath, std::string compressedExtension)
 {
     std::string newFileName;
     std::string fileString(filePath);
@@ -65,4 +87,17 @@ void HuffmanCompressor::CreateNewFile(std::string filePath)
 {
     std::ofstream outfile(filePath);
     outfile.close();
+}
+
+bool HuffmanCompressor::FileExists(const std::string& filePath) 
+{
+    struct stat buffer;
+    return (stat(filePath.c_str(), &buffer) == 0);
+}
+
+std::string HuffmanCompressor::StripExtension(std::string filePath, std::string extension) 
+{
+    std::size_t found = filePath.find(extension);
+    std::string newFilePath = filePath.substr(0, filePath.size() - extension.size());
+    return newFilePath;
 }

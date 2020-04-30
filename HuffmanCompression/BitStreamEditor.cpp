@@ -12,5 +12,26 @@ std::string BitStreamEditor::ApplyHuffmanCodes(std::string inputBitStream, std::
         output += huffmanCodes[Util::ConvertBinaryToDecimal(inputBitStream.substr(i, 8))];
     }
 
-	return output;
+    return output;
+}
+
+std::string BitStreamEditor::ReverseHuffmanCodes(std::string compressedBitStream, std::unordered_map<std::string, int> reversedHuffmanCodes)
+{
+    std::string output = "";
+    std::string possibleKey = "";
+
+    for (unsigned index = 0; index < compressedBitStream.size(); ++index)
+    {
+        possibleKey += compressedBitStream.substr(index, 1);
+
+        if (reversedHuffmanCodes.find(possibleKey) == reversedHuffmanCodes.end()) {
+            continue;
+        }
+        else {
+            output += Util::ConvertDecimalToBinary(reversedHuffmanCodes[possibleKey], 8);
+            possibleKey = "";
+        }
+    }
+
+    return output;
 }

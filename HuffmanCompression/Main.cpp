@@ -1,4 +1,10 @@
+//external includes
 #include <iostream>
+#include <stdlib.h>
+#include <set>
+#include <vector>
+
+//internal includes
 #include "HuffmanCompressor.h"
 
 
@@ -20,7 +26,7 @@ int main(int argc, char* argv[]) {
         }
         else
         {
-            //HuffmanCompressor::Decompress(filePath, compressedExtension);
+            HuffmanCompressor::Decompress(filePath, compressedExtension, huffmanCodesFileExtension);
         }
     }
 }

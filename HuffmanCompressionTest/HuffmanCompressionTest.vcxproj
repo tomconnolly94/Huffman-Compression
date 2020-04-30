@@ -159,7 +159,6 @@
     <ClCompile Include="BitStreamEditorTest.cpp" />
     <ClCompile Include="BitStreamAnalysisTest.cpp" />
     <ClCompile Include="HuffmanCompressionTest.cpp" />
-    <ClCompile Include="HuffmanFileInterfaceTest.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

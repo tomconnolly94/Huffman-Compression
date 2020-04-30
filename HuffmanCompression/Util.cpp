@@ -1,4 +1,7 @@
+#include <map>
+
 #include "Util.h"
+#include <bitset>
 
 int Util::ConvertBinaryToDecimal(std::string strInput)
 {
@@ -13,4 +16,26 @@ int Util::ConvertBinaryToDecimal(std::string strInput)
 		++i;
 	}
 	return decimalNumber;
+}
+
+std::string Util::ConvertDecimalToBinary(int strInput, int requiredLength)
+{
+	const int initialBitNum = 8;
+	int bitsToCull = initialBitNum - requiredLength;
+
+	std::string output = std::bitset<initialBitNum>(int(strInput)).to_string();
+	output = output.substr(bitsToCull);
+
+	return output;
+}
+
+
+std::unordered_map<std::string, int> Util::ReverseHuffmanCodeMap(std::unordered_map<int, std::string> huffmanCodes)
+{
+	std::unordered_map<std::string, int> reversedHuffmanCodes;
+	for (auto const& huffmanCode : huffmanCodes)
+	{
+		reversedHuffmanCodes.insert(std::pair<std::string, int>(huffmanCode.second, huffmanCode.first));
+	}
+	return reversedHuffmanCodes;
 }

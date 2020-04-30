@@ -7,5 +7,5 @@
 class BitStreamEditor {
 public:
 	static std::string ApplyHuffmanCodes(std::string inputBitStream, std::unordered_map<int, std::string> huffmanCodes);
-private:
+	static std::string ReverseHuffmanCodes(std::string compressedBitStream, std::unordered_map<std::string, int> huffmanCodes);
 };
