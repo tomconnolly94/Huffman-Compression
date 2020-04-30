@@ -212,7 +212,7 @@ namespace HuffmanCompressionTest
 			}
 		}
 
-		TEST_METHOD(TestHuffmanTreeSerialising)
+		TEST_METHOD(TestHuffmanTreeSerialisiation)
 		{
 			HuffmanNode huffmanNodeB(39, 7);
 			HuffmanNode huffmanNodeC(4, 8);
@@ -232,11 +232,36 @@ namespace HuffmanCompressionTest
 
 			HuffmanTree huffmanTree(huffmanNodes);
 
-			std::string serialisedHuffmanCodes = huffmanTree.SerialiseToJSON();
+			std::string serialisedHuffmanCodes = huffmanTree.SerialiseWithNewLines();
 			
-			std::string expectedSerialisedHuffmanCodes = "{{\"69\", \"11\"},{\"3\", \"1000\"},{\"27\",\"1011\"},{\"39\", \"1010\"},{\"4\", \"1001\"},{\"41\", \"0\"}}";
+			std::string expectedSerialisedHuffmanCodes = "69\n11\n3\n1000\n27\n1011\n39\n1010\n4\n1001\n41\n0\n";
 
 			Assert::AreEqual(expectedSerialisedHuffmanCodes, serialisedHuffmanCodes);
+		}
+
+		TEST_METHOD(TestReadNewLineFileContent)
+		{
+			std::string inputNewLineFileContent = "117\n1011\n53\n1101011100\n101\n111\n48\n1000010100\n112\n11011\n68\n11010111111\n106\n1101011101\n114\n00000";
+			std::unordered_map<int, std::string> expectedHuffmanCodes =
+			{ 
+				{117, "1011"},
+				{53, "1101011100"},
+				{101, "111"},
+				{48, "1000010100"},
+				{112, "11011"},
+				{68, "11010111111"},
+				{106, "1101011101"},
+				{114, "00000"},
+			};
+
+			std::unordered_map<int, std::string> huffmanCodes = HuffmanTree::DeserialiseFromNewLines(inputNewLineFileContent);
+
+			Assert::AreEqual(expectedHuffmanCodes.size(), huffmanCodes.size());
+
+			for (int huffmanIndex = 0; huffmanIndex < expectedHuffmanCodes.size(); ++huffmanIndex)
+			{
+				Assert::AreEqual(expectedHuffmanCodes[huffmanIndex], huffmanCodes[huffmanIndex]);
+			}
 		}
 	};
 }

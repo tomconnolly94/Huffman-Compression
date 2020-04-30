@@ -12,11 +12,11 @@ int main(int argc, char* argv[]) {
 
         char* filePath = argv[argIndex];
         std::string compressedExtension = ".huffCompressed";
-        std::string huffmanTreeJSONExtension = ".huffmanTree.json";
+        std::string huffmanCodesFileExtension = ".huffmanCodes";
 
         if (HuffmanCompressor::IsCompressing(filePath, compressedExtension))
         {
-            HuffmanCompressor::Compress(filePath, compressedExtension, huffmanTreeJSONExtension);
+            HuffmanCompressor::Compress(filePath, compressedExtension, huffmanCodesFileExtension);
         }
         else
         {

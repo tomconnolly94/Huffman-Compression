@@ -5,15 +5,15 @@
 
 //internal includes
 #include "HuffmanCompressor.h"
-#include "HuffmanFileInterface.h"
+#include "FileInterface.h"
 #include "HuffmanNode.h"
 #include "BitStreamAnalysis.h"
 #include "BitStreamEditor.h"
 #include "HuffmanTree.h"
 
-void HuffmanCompressor::Compress(char* filePath, std::string compressedExtension, std::string huffmanTreeJSONExtension) {
+void HuffmanCompressor::Compress(char* filePath, std::string compressedExtension, std::string huffmanCodesFileExtension) {
 
-	std::string bitStream = HuffmanFileInterface::ReadFileAsBits(filePath);
+	std::string bitStream = FileInterface::ReadFileAsBits(filePath);
 	std::vector<HuffmanNode*> huffmanNodes = BitStreamAnalysis::CountByteFrequency(bitStream);
 	HuffmanTree huffmanTree(huffmanNodes);
 	std::unordered_map<int, std::string> huffmanCodes = huffmanTree.GenerateHuffmanCodes();
@@ -24,14 +24,14 @@ void HuffmanCompressor::Compress(char* filePath, std::string compressedExtension
     //write outputBitStream to a new file
     std::string compressedFileName = GetNewFilePath(filePath, compressedExtension);
     CreateNewFile(compressedFileName);
-    HuffmanFileInterface::WriteBitsToFile(outputBitStream, compressedFileName.c_str());
+    FileInterface::WriteBitsToFile(outputBitStream, compressedFileName.c_str());
 
-    std::string serialisedHuffmanTrees = huffmanTree.SerialiseToJSON();
+    std::string serialisedHuffmanCodes = huffmanTree.SerialiseWithNewLines();
 
     //write serialised HuffmanTree to a new file
-    std::string huffmanTreeJSONFileName = GetNewFilePath(filePath, huffmanTreeJSONExtension);
-    CreateNewFile(huffmanTreeJSONFileName);
-    HuffmanFileInterface::WriteStringToFile(serialisedHuffmanTrees, huffmanTreeJSONFileName.c_str());
+    std::string huffmanCodesFileName = GetNewFilePath(filePath, huffmanCodesFileExtension);
+    CreateNewFile(huffmanCodesFileName);
+    FileInterface::WriteStringToFile(serialisedHuffmanCodes, huffmanCodesFileName.c_str());
 }
 
 std::string HuffmanCompressor::GetNewFilePath(char* filePath, std::string compressedExtension)
