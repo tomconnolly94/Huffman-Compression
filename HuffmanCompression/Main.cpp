@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
 
         char* filePath = argv[argIndex];
         std::string compressedExtension = ".huffCompressed";
-        std::string huffmanCodesFileExtension = ".huffmanCodes";
+        std::string huffmanCodesFileExtension = ".huffCodes";
 
         if (HuffmanUtil::IsCompressing(filePath, compressedExtension))
         {
