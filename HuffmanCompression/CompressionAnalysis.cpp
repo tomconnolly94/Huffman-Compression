@@ -1,16 +1,18 @@
 //external includes
 #include <sstream>
+#include <iostream>
 
 //internal includes
 #include "CompressionAnalysis.h"
 #include "HuffmanUtil.h"
 
-CompressionAnalysis::CompressionAnalysis(const char* filePath) : 
-	fileSizeStart(HuffmanUtil::GetFileSize(filePath)), 
-	fileSizeEnd(0.0), 
-	startTime(0), 
-	endTime(0), 
-	compressionOperation(CompressionOperation::Unspecified) 
+CompressionAnalysis::CompressionAnalysis(const char* filePath) :
+	fileSizeStart(0),
+	fileSizeEnd(0),
+	startTime(0),
+	endTime(0),
+	compressionOperation(CompressionOperation::Unspecified),
+	enumTranslations({ {CompressionOperation::Compressing, "Compressing"}, {CompressionOperation::Decompressing, "Decompressing"}, {CompressionOperation::Unspecified, "Unspecified"} })
 {}
 
 void CompressionAnalysis::ReportOperationType(CompressionOperation operation)
@@ -18,12 +20,12 @@ void CompressionAnalysis::ReportOperationType(CompressionOperation operation)
 	compressionOperation = operation;
 }
 
-void CompressionAnalysis::RecordFileSizeStart(double fileSize)
+void CompressionAnalysis::RecordFileSizeStart(int fileSize)
 {
 	fileSizeStart = fileSize;
 }
 
-void CompressionAnalysis::RecordFileSizeEnd(double fileSize)
+void CompressionAnalysis::RecordFileSizeEnd(int fileSize)
 {
 	fileSizeEnd = fileSize;
 }
@@ -42,12 +44,23 @@ std::map<std::string, std::string> CompressionAnalysis::GetAnalysisReport()
 {
 	std::map<std::string, std::string> report;
 
-	std::ostringstream fileSizeDifference(fileSizeStart - fileSizeEnd);
-	report["fileSizeReduction"] = fileSizeDifference.str();
+	int fileSizeDifference = fileSizeEnd - fileSizeStart;
+	int timeDifference = endTime - startTime;
 
-	std::stringstream ss(startTime - endTime);
-	report["timeTaken"] = ss.str();
-
-	report["operationType"] = "";// compressionOperation.ToString("G");
+	report["Operation Type"] = enumTranslations[compressionOperation];
+	report["File Size Difference"] = std::to_string(fileSizeDifference) + " kB";
+	report["Time Taken"] = std::to_string(timeDifference) + " ms";
+	report["Compression Rate"] = std::to_string(abs(fileSizeDifference / timeDifference)) + " kBs/ms";
 	return report;
+}
+
+void CompressionAnalysis::PrintAnalysisReport() 
+{
+	std::cout << "Analysis Report: " << std::endl << std::endl;
+	std::map<std::string, std::string> compressionAnalysisReport = GetAnalysisReport();
+
+	for (std::map<std::string, std::string>::iterator it = compressionAnalysisReport.begin(); it != compressionAnalysisReport.end(); it++)
+	{
+		std::cout << it->first << ": " << it->second << std::endl;
+	}
 }

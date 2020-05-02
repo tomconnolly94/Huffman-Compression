@@ -33,24 +33,16 @@ int CompressionManager::Run()
 
     if (compressionOperation == CompressionAnalysis::CompressionOperation::Compressing)
     {
-        operationSuccess = HuffmanCompressor::Compress(filePath, compressedExtension, huffmanCodesFileExtension);
+        operationSuccess = HuffmanCompressor::Compress(filePath, compressedExtension, huffmanCodesFileExtension, compressionAnalysis);
     }
     else
     {
-        operationSuccess = HuffmanCompressor::Decompress(filePath, compressedExtension, huffmanCodesFileExtension);
+        operationSuccess = HuffmanCompressor::Decompress(filePath, compressedExtension, huffmanCodesFileExtension, compressionAnalysis);
     }
     compressionAnalysis.RecordCompressionEndTime();
 
-    std::map<std::string, std::string> compressionAnalysisReport = compressionAnalysis.GetAnalysisReport();
-
     //print analysis report
-    for (std::map<std::string, std::string>::iterator it = compressionAnalysisReport.begin(); it != compressionAnalysisReport.end(); it++)
-    {
-        std::cout << it->first  // string (key)
-            << ': '
-            << it->second   // string's value 
-            << std::endl;
-    }
+    compressionAnalysis.PrintAnalysisReport();
 
     return operationSuccess;
 }

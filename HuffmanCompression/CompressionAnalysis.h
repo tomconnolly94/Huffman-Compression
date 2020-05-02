@@ -9,16 +9,17 @@ public:
 	CompressionAnalysis(const char* filePath);
 	enum class CompressionOperation { Compressing, Decompressing, Unspecified };
 	void ReportOperationType(CompressionOperation operation);
-	void RecordFileSizeStart(double fileize);
-	void RecordFileSizeEnd(double fileize);
+	void RecordFileSizeStart(int fileize);
+	void RecordFileSizeEnd(int fileize);
 	void RecordCompressionStartTime();
 	void RecordCompressionEndTime();
-	std::map<std::string, std::string> GetAnalysisReport();
-
+	void PrintAnalysisReport();
 private:
+	std::map<std::string, std::string> GetAnalysisReport();
 	CompressionOperation compressionOperation;
-	double fileSizeStart;
-	double fileSizeEnd;
+	int fileSizeStart;
+	int fileSizeEnd;
 	time_t startTime;
 	time_t endTime;
+	std::map<CompressionOperation, std::string> enumTranslations;
 };

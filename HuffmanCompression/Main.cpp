@@ -14,10 +14,13 @@ int main(int argc, char* argv[])
         std::cout << "No file provided in the command line, please provide a file to be compressed." << std::endl;
     }
 
+    //run compression algortihm on each input file
     for (int argIndex = 1; argIndex < argc; ++argIndex) 
     {
         char* filePath = argv[argIndex];
         CompressionManager compressionManager(filePath);
-        return compressionManager.Run();
+        int compressionResultFlag = compressionManager.Run();
+        if (compressionResultFlag > 0) return compressionResultFlag;
+        return 0;
     }
 }

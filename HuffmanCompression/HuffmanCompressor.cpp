@@ -11,8 +11,9 @@
 #include "HuffmanTree.h"
 #include "HuffmanUtil.h"
 
-int HuffmanCompressor::Compress(const char* filePath, std::string compressedExtension, std::string huffmanCodesFileExtension) 
+int HuffmanCompressor::Compress(const char* filePath, std::string compressedExtension, std::string huffmanCodesFileExtension, CompressionAnalysis& compressionAnalysis)
 {
+    compressionAnalysis.RecordFileSizeStart(HuffmanUtil::GetFileSize(filePath));
     //read input files
 	std::string bitStream = HuffmanFileInterface::ReadFileAsBits(filePath);
     
@@ -33,11 +34,11 @@ int HuffmanCompressor::Compress(const char* filePath, std::string compressedExte
     std::string huffmanCodesFileName = HuffmanFileInterface::GetNewFilePath(filePath, huffmanCodesFileExtension);
     HuffmanFileInterface::CreateNewFile(huffmanCodesFileName);
     HuffmanFileInterface::WriteStringToFile(serialisedHuffmanCodes, huffmanCodesFileName.c_str());
-    
+    compressionAnalysis.RecordFileSizeEnd(HuffmanUtil::GetFileSize(compressedFileName.c_str()) + HuffmanUtil::GetFileSize(huffmanCodesFileName.c_str()));
     return 0;
 }
 
-int HuffmanCompressor::Decompress(const char* compressedFile, std::string compressedExtension, std::string huffmanCodesFileExtension)
+int HuffmanCompressor::Decompress(const char* compressedFile, std::string compressedExtension, std::string huffmanCodesFileExtension, CompressionAnalysis& compressionAnalysis)
 {
     //read compressed file
     std::string compressedBitStream = HuffmanFileInterface::ReadFileAsBits(compressedFile);
@@ -53,6 +54,8 @@ int HuffmanCompressor::Decompress(const char* compressedFile, std::string compre
         return 2;
     }
 
+    compressionAnalysis.RecordFileSizeStart(HuffmanUtil::GetFileSize(compressedFile) + HuffmanUtil::GetFileSize(huffmanCodesFile.c_str()));
+
     //reconstruct huffman codes map and swap the keys and values
     std::unordered_map<int, std::string> huffmanCodes = HuffmanTree::DeserialiseFromNewLines(HuffmanFileInterface::ReadStringFromFile(huffmanCodesFile.c_str()));
     std::unordered_map<std::string, int> reversedHuffmanCodes = HuffmanUtil::ReverseHuffmanCodeMap(huffmanCodes);
@@ -66,6 +69,8 @@ int HuffmanCompressor::Decompress(const char* compressedFile, std::string compre
 
     //write the decompressed bits to file
     HuffmanFileInterface::WriteBitsToFile(originalTextAsBits, decompressedFileName.c_str());
+
+    compressionAnalysis.RecordFileSizeEnd(HuffmanUtil::GetFileSize(decompressedFileName.c_str()));
 
     return 0;
 }
