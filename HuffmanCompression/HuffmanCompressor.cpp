@@ -11,7 +11,7 @@
 #include "HuffmanTree.h"
 #include "HuffmanUtil.h"
 
-int HuffmanCompressor::Compress(char* filePath, std::string compressedExtension, std::string huffmanCodesFileExtension) 
+int HuffmanCompressor::Compress(const char* filePath, std::string compressedExtension, std::string huffmanCodesFileExtension) 
 {
     //read input files
 	std::string bitStream = HuffmanFileInterface::ReadFileAsBits(filePath);
@@ -37,7 +37,7 @@ int HuffmanCompressor::Compress(char* filePath, std::string compressedExtension,
     return 0;
 }
 
-int HuffmanCompressor::Decompress(char* compressedFile, std::string compressedExtension, std::string huffmanCodesFileExtension)
+int HuffmanCompressor::Decompress(const char* compressedFile, std::string compressedExtension, std::string huffmanCodesFileExtension)
 {
     //read compressed file
     std::string compressedBitStream = HuffmanFileInterface::ReadFileAsBits(compressedFile);

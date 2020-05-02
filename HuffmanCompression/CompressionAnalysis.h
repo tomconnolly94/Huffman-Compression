@@ -6,9 +6,7 @@
 
 class CompressionAnalysis {
 public:
-	CompressionAnalysis();
 	CompressionAnalysis(const char* filePath);
-
 	enum class CompressionOperation { Compressing, Decompressing, Unspecified };
 	void ReportOperationType(CompressionOperation operation);
 	void RecordFileSizeStart(double fileize);

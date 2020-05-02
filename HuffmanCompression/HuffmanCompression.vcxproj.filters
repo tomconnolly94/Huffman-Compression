@@ -66,6 +66,9 @@
     <ClCompile Include="CompressionAnalysis.cpp">
       <Filter>Source Files\Analysis</Filter>
     </ClCompile>
+    <ClCompile Include="CompressionManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HuffmanNode.h">
@@ -91,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="CompressionAnalysis.h">
       <Filter>Header Files\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="CompressionManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

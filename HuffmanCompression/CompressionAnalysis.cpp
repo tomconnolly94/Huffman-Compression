@@ -5,23 +5,13 @@
 #include "CompressionAnalysis.h"
 #include "HuffmanUtil.h"
 
-CompressionAnalysis::CompressionAnalysis(const char* filePath)
-{
-	fileSizeStart = HuffmanUtil::GetFileSize(filePath);
-	fileSizeEnd = 0.0;
-	time_t startTime = 0;
-	time_t endTime = 0;
-	compressionOperation = CompressionOperation::Unspecified;
-}
-
-CompressionAnalysis::CompressionAnalysis()
-{
-	fileSizeStart = 0.0;
-	fileSizeEnd = 0.0;
-	time_t startTime = 0;
-	time_t endTime = 0;
-	compressionOperation = CompressionOperation::Unspecified;
-}
+CompressionAnalysis::CompressionAnalysis(const char* filePath) : 
+	fileSizeStart(HuffmanUtil::GetFileSize(filePath)), 
+	fileSizeEnd(0.0), 
+	startTime(0), 
+	endTime(0), 
+	compressionOperation(CompressionOperation::Unspecified) 
+{}
 
 void CompressionAnalysis::ReportOperationType(CompressionOperation operation)
 {
@@ -51,10 +41,13 @@ void CompressionAnalysis::RecordCompressionEndTime()
 std::map<std::string, std::string> CompressionAnalysis::GetAnalysisReport()
 {
 	std::map<std::string, std::string> report;
-	report["fileSizeReduction"] = fileSizeStart - fileSizeEnd;
+
+	std::ostringstream fileSizeDifference(fileSizeStart - fileSizeEnd);
+	report["fileSizeReduction"] = fileSizeDifference.str();
 
 	std::stringstream ss(startTime - endTime);
 	report["timeTaken"] = ss.str();
+
 	report["operationType"] = "";// compressionOperation.ToString("G");
 	return report;
 }
