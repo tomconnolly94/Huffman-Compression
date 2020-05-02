@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClCompile Include="BitStreamAnalysis.cpp" />
     <ClCompile Include="BitStreamEditor.cpp" />
+    <ClCompile Include="CompressionAnalysis.cpp" />
     <ClCompile Include="HuffmanCompressor.cpp" />
     <ClCompile Include="HuffmanFileInterface.cpp" />
     <ClCompile Include="HuffmanNode.cpp" />
@@ -162,6 +163,7 @@
   <ItemGroup>
     <ClInclude Include="BitStreamEditor.h" />
     <ClInclude Include="BitStreamAnalysis.h" />
+    <ClInclude Include="CompressionAnalysis.h" />
     <ClInclude Include="HuffmanCompressor.h" />
     <ClInclude Include="HuffmanFileInterface.h" />
     <ClInclude Include="HuffmanNode.h" />

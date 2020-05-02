@@ -13,7 +13,6 @@
 
 int HuffmanCompressor::Compress(char* filePath, std::string compressedExtension, std::string huffmanCodesFileExtension) 
 {
-
 	std::string bitStream = HuffmanFileInterface::ReadFileAsBits(filePath);
 	std::vector<HuffmanNode*> huffmanNodes = BitStreamAnalysis::CountByteFrequency(bitStream);
 	HuffmanTree huffmanTree(huffmanNodes);
