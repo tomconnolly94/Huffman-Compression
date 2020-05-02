@@ -153,7 +153,7 @@
     <ClCompile Include="HuffmanNode.cpp" />
     <ClCompile Include="HuffmanTree.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Util.cpp" />
+    <ClCompile Include="HuffmanUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitStreamEditor.h" />
@@ -162,7 +162,7 @@
     <ClInclude Include="HuffmanFileInterface.h" />
     <ClInclude Include="HuffmanNode.h" />
     <ClInclude Include="HuffmanTree.h" />
-    <ClInclude Include="Util.h" />
+    <ClInclude Include="HuffmanUtil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

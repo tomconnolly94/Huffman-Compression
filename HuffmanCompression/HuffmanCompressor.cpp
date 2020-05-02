@@ -9,7 +9,7 @@
 #include "BitStreamAnalysis.h"
 #include "BitStreamEditor.h"
 #include "HuffmanTree.h"
-#include "Util.h"
+#include "HuffmanUtil.h"
 
 void HuffmanCompressor::Compress(char* filePath, std::string compressedExtension, std::string huffmanCodesFileExtension) 
 {
@@ -42,7 +42,7 @@ void HuffmanCompressor::Decompress(char* compressedFile, std::string compressedE
     std::string huffmanCodesFile = HuffmanFileInterface::GetNewFilePath(decompressedFilePath.c_str(), huffmanCodesFileExtension);
 
     std::unordered_map<int, std::string> huffmanCodes = HuffmanTree::DeserialiseFromNewLines(HuffmanFileInterface::ReadStringFromFile(huffmanCodesFile.c_str()));
-    std::unordered_map<std::string, int> reversedHuffmanCodes = Util::ReverseHuffmanCodeMap(huffmanCodes);
+    std::unordered_map<std::string, int> reversedHuffmanCodes = HuffmanUtil::ReverseHuffmanCodeMap(huffmanCodes);
     
     std::string originalTextAsBits = BitStreamEditor::ReverseHuffmanCodes(compressedBitStream, reversedHuffmanCodes);
 

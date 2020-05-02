@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "../HuffmanCompression/BitStreamAnalysis.cpp"
-#include "../HuffmanCompression/Util.cpp"
+#include "../HuffmanCompression/HuffmanUtil.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

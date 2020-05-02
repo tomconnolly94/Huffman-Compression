@@ -3,7 +3,7 @@
 
 //internal includes
 #include "HuffmanFileInterface.h"
-#include "Util.h"
+#include "HuffmanUtil.h"
 
 void HuffmanFileInterface::CreateNewFile(std::string filePath)
 {
@@ -29,7 +29,7 @@ std::string HuffmanFileInterface::GetNewFilePath(const char* filePath, std::stri
     std::string newFileName;
     std::string fileString(filePath);
 
-    if (Util::IsCompressing(filePath, compressedExtension)) {
+    if (HuffmanUtil::IsCompressing(filePath, compressedExtension)) {
         newFileName = fileString + compressedExtension;
     }
     else {

@@ -1,12 +1,15 @@
 #pragma once
+
+//external includes
 #include <string>
 #include <vector>
 #include <unordered_map>
 
-class Util {
+//internal includes
+#include "Util.h"
+
+class HuffmanUtil : public Util {
 public:
-	static int ConvertBinaryToDecimal(std::string strInput);
 	static std::unordered_map<std::string, int> ReverseHuffmanCodeMap(std::unordered_map<int, std::string> huffmanCodes);
-	static std::string ConvertDecimalToBinary(int strInput, int requiredLength);
 	static bool IsCompressing(std::string fileString, std::string compressedExtension);
 };

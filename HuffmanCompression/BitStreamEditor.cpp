@@ -1,6 +1,6 @@
 
 #include "BitStreamEditor.h"
-#include "Util.h"
+#include "HuffmanUtil.h"
 #include <iostream>
 
 std::string BitStreamEditor::ApplyHuffmanCodes(std::string inputBitStream, std::unordered_map<int, std::string> huffmanCodes)
@@ -9,7 +9,7 @@ std::string BitStreamEditor::ApplyHuffmanCodes(std::string inputBitStream, std::
 
     for (unsigned i = 0; i < inputBitStream.size(); i += 8)
     {
-        output += huffmanCodes[Util::ConvertBinaryToDecimal(inputBitStream.substr(i, 8))];
+        output += huffmanCodes[HuffmanUtil::ConvertBinaryToDecimal(inputBitStream.substr(i, 8))];
     }
 
     return output;
@@ -28,7 +28,7 @@ std::string BitStreamEditor::ReverseHuffmanCodes(std::string compressedBitStream
             continue;
         }
         else {
-            output += Util::ConvertDecimalToBinary(reversedHuffmanCodes[possibleKey], 8);
+            output += HuffmanUtil::ConvertDecimalToBinary(reversedHuffmanCodes[possibleKey], 8);
             possibleKey = "";
         }
     }

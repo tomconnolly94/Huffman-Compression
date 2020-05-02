@@ -1,6 +1,6 @@
 //internal includes
 #include "BitStreamAnalysis.h"
-#include "Util.h"
+#include "HuffmanUtil.h"
 #include "HuffmanTree.h"
 
 std::vector<HuffmanNode*> BitStreamAnalysis::CountByteFrequency(std::string input) {
@@ -8,7 +8,7 @@ std::vector<HuffmanNode*> BitStreamAnalysis::CountByteFrequency(std::string inpu
 
     for (unsigned i = 0; i < input.size(); i += 8)
     {
-        count[Util::ConvertBinaryToDecimal(input.substr(i, 8))]++;
+        count[HuffmanUtil::ConvertBinaryToDecimal(input.substr(i, 8))]++;
     }
     
     return GetHuffmanNodes(count);

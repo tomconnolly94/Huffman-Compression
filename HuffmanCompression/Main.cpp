@@ -7,7 +7,7 @@
 
 //internal includes
 #include "HuffmanCompressor.h"
-#include "Util.h"
+#include "HuffmanUtil.h"
 
 
 int main(int argc, char* argv[]) {
@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
         std::string compressedExtension = ".huffCompressed";
         std::string huffmanCodesFileExtension = ".huffmanCodes";
 
-        if (Util::IsCompressing(filePath, compressedExtension))
+        if (HuffmanUtil::IsCompressing(filePath, compressedExtension))
         {
             HuffmanCompressor::Compress(filePath, compressedExtension, huffmanCodesFileExtension);
         }
