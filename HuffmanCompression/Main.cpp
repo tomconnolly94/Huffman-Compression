@@ -1,6 +1,5 @@
 //external includes
 #include <iostream>
-//external includes
 #include <stdlib.h>
 #include <set>
 #include <vector>
@@ -8,6 +7,7 @@
 //internal includes
 #include "HuffmanCompressor.h"
 #include "HuffmanUtil.h"
+#include "HuffmanFileInterface.h"
 
 
 int main(int argc, char* argv[]) {
@@ -22,13 +22,21 @@ int main(int argc, char* argv[]) {
         std::string compressedExtension = ".huffCompressed";
         std::string huffmanCodesFileExtension = ".huffCodes";
 
+        //ensure filePath exists
+        if(!HuffmanFileInterface::FileExists(filePath))
+        {
+            std::cout << "ERROR: Input file does not exist! Please provide the software with a file that exists on disk." << std::endl;
+            return 1;
+        }
+
         if (HuffmanUtil::IsCompressing(filePath, compressedExtension))
         {
-            HuffmanCompressor::Compress(filePath, compressedExtension, huffmanCodesFileExtension);
+            return HuffmanCompressor::Compress(filePath, compressedExtension, huffmanCodesFileExtension);
         }
         else
         {
-            HuffmanCompressor::Decompress(filePath, compressedExtension, huffmanCodesFileExtension);
+            return HuffmanCompressor::Decompress(filePath, compressedExtension, huffmanCodesFileExtension);
         }
+        
     }
 }

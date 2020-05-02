@@ -4,6 +4,6 @@
 
 class HuffmanCompressor {
 public:
-	static void Compress(char* filePath, std::string compressedExtension, std::string huffmanCodesFileExtension);
-	static void Decompress(char* filePath, std::string compressedExtension, std::string huffmanCodesFileExtension);
+	static int Compress(char* filePath, std::string compressedExtension, std::string huffmanCodesFileExtension);
+	static int Decompress(char* filePath, std::string compressedExtension, std::string huffmanCodesFileExtension);
 };
