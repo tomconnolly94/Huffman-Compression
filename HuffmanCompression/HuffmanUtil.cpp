@@ -1,6 +1,7 @@
 //external includes
 #include <map>
 #include <bitset>
+#include <fstream>
 
 //internal includes
 #include "HuffmanUtil.h"
@@ -24,4 +25,14 @@ bool HuffmanUtil::IsCompressing(std::string fileString, std::string compressedEx
         compressing = false;
     }
     return compressing;
+}
+
+int HuffmanUtil::GetFileSize(const char* filePath)
+{
+	FILE* pFile = NULL;
+	fopen_s(&pFile, filePath, "rb");
+	fseek(pFile, 0, SEEK_END);
+	int Size = ftell(pFile);
+	fclose(pFile);
+	return Size;
 }

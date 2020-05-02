@@ -8,6 +8,7 @@
 #include "HuffmanCompressor.h"
 #include "HuffmanUtil.h"
 #include "HuffmanFileInterface.h"
+#include "CompressionAnalysis.h"
 
 
 int main(int argc, char* argv[]) {
@@ -21,6 +22,9 @@ int main(int argc, char* argv[]) {
         char* filePath = argv[argIndex];
         std::string compressedExtension = ".huffCompressed";
         std::string huffmanCodesFileExtension = ".huffCodes";
+        CompressionAnalysis compressionAnalysis(filePath);
+        CompressionAnalysis::CompressionOperation compressionOperation = CompressionAnalysis::CompressionOperation::Unspecified;
+        int operationSuccess = 0;
 
         //ensure filePath exists
         if(!HuffmanFileInterface::FileExists(filePath))
@@ -31,12 +35,28 @@ int main(int argc, char* argv[]) {
 
         if (HuffmanUtil::IsCompressing(filePath, compressedExtension))
         {
-            return HuffmanCompressor::Compress(filePath, compressedExtension, huffmanCodesFileExtension);
+            compressionOperation = CompressionAnalysis::CompressionOperation::Compressing;
         }
         else
         {
-            return HuffmanCompressor::Decompress(filePath, compressedExtension, huffmanCodesFileExtension);
+            compressionOperation = CompressionAnalysis::CompressionOperation::Decompressing;
         }
-        
+
+        compressionAnalysis.ReportOperationType(compressionOperation);
+        compressionAnalysis.RecordCompressionStartTime();
+
+        if(compressionOperation == CompressionAnalysis::CompressionOperation::Compressing)
+        {
+            operationSuccess = HuffmanCompressor::Compress(filePath, compressedExtension, huffmanCodesFileExtension);
+        }
+        else
+        {
+            operationSuccess = HuffmanCompressor::Decompress(filePath, compressedExtension, huffmanCodesFileExtension);
+        }
+        compressionAnalysis.RecordCompressionEndTime();
+
+        std::map<std::string, std::string> compressionAnalysisReport = compressionAnalysis.GetAnalysisReport();
+
+        return operationSuccess;
     }
 }

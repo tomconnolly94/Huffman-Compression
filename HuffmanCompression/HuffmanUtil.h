@@ -12,4 +12,5 @@ class HuffmanUtil : public Util {
 public:
 	static std::unordered_map<std::string, int> ReverseHuffmanCodeMap(std::unordered_map<int, std::string> huffmanCodes);
 	static bool IsCompressing(std::string fileString, std::string compressedExtension);
+	static int GetFileSize(const char* filename);
 };

@@ -1,9 +1,18 @@
 //external includes
-#include <ctime>
 #include <sstream>
 
 //internal includes
 #include "CompressionAnalysis.h"
+#include "HuffmanUtil.h"
+
+CompressionAnalysis::CompressionAnalysis(const char* filePath)
+{
+	fileSizeStart = HuffmanUtil::GetFileSize(filePath);
+	fileSizeEnd = 0.0;
+	time_t startTime = 0;
+	time_t endTime = 0;
+	compressionOperation = CompressionOperation::Unspecified;
+}
 
 CompressionAnalysis::CompressionAnalysis()
 {
@@ -13,6 +22,7 @@ CompressionAnalysis::CompressionAnalysis()
 	time_t endTime = 0;
 	compressionOperation = CompressionOperation::Unspecified;
 }
+
 void CompressionAnalysis::ReportOperationType(CompressionOperation operation)
 {
 	compressionOperation = operation;
@@ -27,7 +37,6 @@ void CompressionAnalysis::RecordFileSizeEnd(double fileSize)
 {
 	fileSizeEnd = fileSize;
 }
-
 
 void CompressionAnalysis::RecordCompressionStartTime()
 {
